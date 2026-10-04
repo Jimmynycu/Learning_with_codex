@@ -1,0 +1,31 @@
+import * as core from '@diffusionstudio/core';
+const composition=new core.Composition({width:1920,height:1080,background:'#eeeae1'});
+const add=async(c:any)=>{const l=await composition.add(new core.Layer());await l.add(c);return c};
+const anim=(key:string,a:number,b:number,end=.8)=>({key,frames:[{time:0,value:a},{time:end,value:b}],easing:'ease-out'});
+const text=async(t:string,x:number,y:number,size:number,delay:number,duration:number,color='#20292d')=>add(new core.TextClip({text:t,x,y,fontSize:size,color,font:{family:'Arial',size:size/3,weight:'700'},delay,duration,animations:[anim('opacity',0,100),anim('translateY',30,0)]} as any));
+const rect=async(x:number,y:number,w:number,h:number,color:string,delay:number,duration:number,animations:any[]=[])=>add(new core.RectangleClip({x,y,width:w,height:h,fill:color,delay,duration,animations}));
+await text('TSMC / 台積電',350,60,32,0,16);await text('A STUDY IN PRECISION',1310,70,23,0,16,'#717876');
+await rect(85,125,1750,2,'#a7aaa3',0,16);await text('DIFFUSION STUDIO  /  NATIVE TIMELINE',85,980,20,0,16,'#737a75');
+for(let i=0;i<4;i++){
+ const d=i*4;
+ await text(['01   /   MATERIAL','02   /   PATTERN','03   /   INTEGRATION','04   /   POSSIBILITY'][i],85,215,27,d,4,'#bc3044');
+ await text(['A single beginning.','Precision at scale.','Stronger together.','Ideas become real.'][i],85,335,76,d,4);
+ await text(['從一片矽，開始。','專業晶圓代工','先進製程 × 先進封裝','台積電 · 讓創新成為現實'][i],85,455,38,d,4,'#68706c');
+ await text(['MATERIAL → POSSIBILITY','DESIGNED BY CUSTOMERS','CONNECTED THROUGH PACKAGING','TSMC / SINCE 1987'][i],85,825,21,d,4,'#7a817b');
+ if(i<2){
+ await add(new core.EllipseClip({x:1190,y:245,width:570,height:570,fill:'#d4d8cf',delay:d,duration:4,animations:[anim('scale',.5,1)]}));
+ for(let y=0;y<7;y++)for(let x=0;x<7;x++){if((x-3)**2+(y-3)**2>11)continue;let start=d+(x+y)*.045;await rect(1220+x*73,275+y*73,61,61,(x+y)%5===0?'#bd3045':'#586e6c',start,4-(start-d),[anim('opacity',0,100,.5)]);}
+ if(i===1)await rect(1160,260,640,5,'#c83049',d,4,[anim('translateY',0,560,3.6)]);
+ }else if(i===2){
+ for(let n=0;n<4;n++){await rect(1150+n*35,620-n*105,530,90,n===3?'#bd3045':['#c4cbbf','#91a296','#627e77'][n],d,4,[anim('translateY',150,0,1+n*.15),anim('opacity',0,100)]);}
+ await text('Si',1390,325,63,d+.6,3.4,'#ffffff');
+ }else{
+ await add(new core.EllipseClip({x:1180,y:225,width:590,height:590,fill:'#bd3045',delay:d,duration:4,animations:[anim('scale',.2,1,1.2)]}));
+ await text('TSMC',1250,425,105,d+.3,3.7,'#ffffff');await text('台積電',1320,555,48,d+.5,3.5,'#ffffff');
+ }
+}
+const source=await core.Source.from<core.AudioSource>('/assets/diffusion.wav');await add(new core.AudioClip(source,{duration:16}));
+composition.mount(document.getElementById('preview')!);
+const encoder=new core.Encoder(composition,{video:{codec:'avc',fps:30,bitrate:8e6},audio:{codec:'opus',sampleRate:48000,numberOfChannels:2,bitrate:192000},format:'mp4'});
+encoder.onProgress=p=>{(window as any).progress=p};(window as any).studio={composition,encoder,ready:true};
+document.getElementById('render')!.onclick=async()=>{try{const result=await encoder.render();if(result.type!=='success'||!result.data)throw Error(JSON.stringify(result));const a=document.createElement('a');a.href=URL.createObjectURL(result.data);a.download='tsmc-diffusion-native.mp4';a.click();(window as any).renderResult={ok:true,bytes:result.data.size};}catch(e){(window as any).renderResult={ok:false,error:String(e)}}};

@@ -1,0 +1,12 @@
+{
+  "result": {
+    "ok": true,
+    "bytes": 2008531
+  },
+  "logs": [
+    "[vite] connecting...",
+    "[vite] connected.",
+    "No Diffusion Studio Core key provided. Rendering with watermark.",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}
