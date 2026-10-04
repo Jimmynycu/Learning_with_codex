@@ -1,0 +1,217 @@
+{
+  "duration": 60,
+  "fps": 30,
+  "max_semantic_hold_seconds": 2,
+  "beats": [
+    {
+      "start": 0,
+      "end": 2,
+      "message": "More AI.",
+      "visual_action": "Escalating compute tiles fill a silicon field.",
+      "scene": "hook"
+    },
+    {
+      "start": 2,
+      "end": 4,
+      "message": "Same power budget.",
+      "visual_action": "A fixed power envelope frames an expanding workload.",
+      "scene": "hook"
+    },
+    {
+      "start": 4,
+      "end": 6,
+      "message": "Make silicon work harder.",
+      "visual_action": "Wafer-to-product framing connects the constraint to TSMC.",
+      "scene": "hook"
+    },
+    {
+      "start": 6,
+      "end": 8,
+      "message": "Control the current.",
+      "visual_action": "Three channels assemble under a surrounding gate.",
+      "scene": "n2"
+    },
+    {
+      "start": 8,
+      "end": 10,
+      "message": "N2. Nanosheet transistors.",
+      "visual_action": "Current pulses trace the gated channels.",
+      "scene": "n2"
+    },
+    {
+      "start": 10,
+      "end": 12,
+      "message": "Volume production began Q4 2025.",
+      "visual_action": "Production status appears beside the active structure.",
+      "scene": "n2"
+    },
+    {
+      "start": 12,
+      "end": 14,
+      "message": "A14. Same speed.",
+      "visual_action": "Normalize the N2 power baseline to 100.",
+      "scene": "power"
+    },
+    {
+      "start": 14,
+      "end": 16,
+      "message": "25\u201330% lower power.",
+      "visual_action": "A14 bar moves to 75; a comparison band opens.",
+      "scene": "power"
+    },
+    {
+      "start": 16,
+      "end": 18,
+      "message": "Versus N2. At equal speed.",
+      "visual_action": "The band extends to 70; both range endpoints are labeled.",
+      "scene": "power"
+    },
+    {
+      "start": 18,
+      "end": 20,
+      "message": "More headroom for your product.",
+      "visual_action": "Reclaimed power space becomes a highlighted design envelope.",
+      "scene": "power"
+    },
+    {
+      "start": 20,
+      "end": 22,
+      "message": "Signals on the front.",
+      "visual_action": "Cyan signal routes illuminate over the silicon plane.",
+      "scene": "backside"
+    },
+    {
+      "start": 22,
+      "end": 24,
+      "message": "Power from the back.",
+      "visual_action": "Ruby rails move below the signal plane; vias connect them.",
+      "scene": "backside"
+    },
+    {
+      "start": 24,
+      "end": 26,
+      "message": "A12. Free routing. Reduce voltage drop.",
+      "visual_action": "Front routing and backside power get separate annotated paths.",
+      "scene": "backside"
+    },
+    {
+      "start": 26,
+      "end": 28,
+      "message": "Compute is only half the story.",
+      "visual_action": "Compute dies arrive on the package substrate.",
+      "scene": "package"
+    },
+    {
+      "start": 28,
+      "end": 30,
+      "message": "Bring memory closer.",
+      "visual_action": "HBM stacks move inward and descend toward the compute dies.",
+      "scene": "package"
+    },
+    {
+      "start": 30,
+      "end": 32,
+      "message": "CoWoS. Compute + HBM.",
+      "visual_action": "Interconnect pulses cross the integrated package.",
+      "scene": "package"
+    },
+    {
+      "start": 32,
+      "end": 34,
+      "message": "Train models. Serve intelligence.",
+      "visual_action": "Paths branch into training, inference and HPC applications.",
+      "scene": "package"
+    },
+    {
+      "start": 34,
+      "end": 36,
+      "message": "A13. 6% less die area.",
+      "visual_action": "A14 and A13 footprints compare at the correct area ratio.",
+      "scene": "area"
+    },
+    {
+      "start": 36,
+      "end": 38,
+      "message": "Backward-compatible design rules.",
+      "visual_action": "Design blocks map between the two footprints.",
+      "scene": "area"
+    },
+    {
+      "start": 38,
+      "end": 40,
+      "message": "More room to design.",
+      "visual_action": "The saved perimeter is highlighted; planned 2029 remains visible.",
+      "scene": "area"
+    },
+    {
+      "start": 40,
+      "end": 42,
+      "message": "What could lower power be worth?",
+      "visual_action": "The diagram becomes an electricity calculation.",
+      "scene": "cost"
+    },
+    {
+      "start": 42,
+      "end": 44,
+      "message": "1 MW \u00d7 8,760 hours \u00d7 US$0.10/kWh.",
+      "visual_action": "Three assumptions connect into an equation.",
+      "scene": "cost"
+    },
+    {
+      "start": 44,
+      "end": 46,
+      "message": "US$876,000 baseline annual electricity.",
+      "visual_action": "The baseline resolves and the savings range separates.",
+      "scene": "cost"
+    },
+    {
+      "start": 46,
+      "end": 48,
+      "message": "US$219,000\u2013262,800 per year.",
+      "visual_action": "Potential annual chip-energy savings count into a range.",
+      "scene": "cost"
+    },
+    {
+      "start": 48,
+      "end": 50,
+      "message": "Measure the system. Validate the business case.",
+      "visual_action": "The assumptions remain attached to the result and exclusions appear.",
+      "scene": "cost"
+    },
+    {
+      "start": 50,
+      "end": 52,
+      "message": "N2. In volume production.",
+      "visual_action": "Roadmap begins with the production milestone.",
+      "scene": "roadmap"
+    },
+    {
+      "start": 52,
+      "end": 54,
+      "message": "A14. Planned for 2028.",
+      "visual_action": "The roadmap advances to the efficiency platform.",
+      "scene": "roadmap"
+    },
+    {
+      "start": 54,
+      "end": 56,
+      "message": "A12 + A13. Planned for 2029.",
+      "visual_action": "Power delivery and density branches complete the roadmap.",
+      "scene": "roadmap"
+    },
+    {
+      "start": 56,
+      "end": 58,
+      "message": "Build your next advantage.",
+      "visual_action": "A bold red end frame resolves around the TSMC name.",
+      "scene": "cta"
+    },
+    {
+      "start": 58,
+      "end": 60,
+      "message": "Explore TSMC's technology portfolio.",
+      "visual_action": "The final action replaces the promise and points to the official portfolio.",
+      "scene": "cta"
+    }
+  ]
+}
