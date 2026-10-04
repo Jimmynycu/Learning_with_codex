@@ -1,0 +1,25 @@
+# Actual critique and revisions
+
+This records concrete observations, not a self-awarded quality score or proof of outperforming an unseen reference.
+
+1. **First 3D keyframes:** broad environment reflections and excessive bloom washed out details, especially on the left and during assembly. The large lit floor contributed an unwanted grey haze. Reduced point/key lighting, removed broad bloom and replaced the floor with an unlit dark surface. Re-rendered wafer/package/network keyframes for inspection.
+2. **Wafer materials:** the first material made the wafer too uniformly green and hid circuit texture. Adjusted base color, metalness and roughness; retained thin-film color variation. The die texture remains original geometry/material artwork.
+3. **Package edges:** perfectly sharp box edges looked generic. Added small bevels, physical contacts and edge components. Lowered the floor to keep the exploded substrate from intersecting it.
+4. **Die continuity:** the first full preview left the selected die too small after the wafer moved away. Added a closer camera state during the handoff, then pull back as the package opens. Strengthened the same die's red edge. Rendered the 7–11.5s transition at 30 fps for inspection.
+5. **Network choreography:** contact pads originally appeared before routes reached them. Their scale now follows route completion, then moving signal dots travel outwards.
+6. **Sound:** replaced the earlier bare repeated beat with seven harmonic phrases, evolving arpeggios, bass, percussion, assembly ticks, sweeps, impacts and a final reverberant chord. Mastered to -16 LUFS target / -1.5 dBTP ceiling. Measured the WAV at -14.6 LUFS integrated and -1.5 dB true peak after mastering; the stated -16 LUFS is the normalizer target, not a claim about the final measurement. Audio metrics verify technical levels, not subjective listening quality.
+7. **Preview timing:** Remotion's every-third-frame preview produced a shorter native audio track. The sparse preview is only a visual review artifact; reattached the full score for review. The final master uses every frame and its native full-length audio is checked separately.
+8. **Ending:** preserved a readable closing statement and a long enough final chord. The public site identifies this as an independent conceptual study.
+
+## Review artifacts
+
+- Initial high-resolution keyframes: `evidence/frame-*.png`.
+- First complete preview contact sheet: `evidence/review-contact.jpg`.
+- Revised high-resolution approval views: `evidence/approval-*.png`.
+- Revised handoff animation: `output/transition.mp4`.
+- Final encoded contact sheet, media and browser verification: generated after the final master finishes.
+
+The original tutorial's visuals remain unavailable. This film applies the available transcript's direction, shot-list, object-continuity, beat-grid and critique methods. It does not claim a verified head-to-head win.
+9. **Handoff occlusion:** the transition review showed that a horizontal floor hid the entire wafer too abruptly as it descended. Disabled that floor; the wafer now travels out of the camera frame. Attached the small substrate components to the substrate's motion instead of leaving them suspended.
+10. **Render antialiasing:** replaced costly multisampling with a full-resolution FXAA pass. The final 3D buffer remains 1920×1080; typography is still native at composition resolution. This is a renderer optimization, not an upscaled preview.
+11. **Final encoded review:** the floor was fixed, but a remaining visibility cutoff still removed the wafer while its edge was in frame at 10.7s. Increased its downward travel and delayed visibility removal until it is fully outside the camera. Re-rendered native frames 240–344 at full resolution, then joined that 3.5-second repair with the unaffected frames using FFmpeg. The original audio is copied without another audio encode. All 840 frame images originate in Remotion/Three.js; FFmpeg performs the frame-accurate final join and video encode. A full render from the corrected source generates the corrected movement directly.

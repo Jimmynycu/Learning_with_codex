@@ -1,0 +1,137 @@
+import React,{useEffect,useRef,useState} from 'react';
+import {useCurrentFrame,delayRender,continueRender} from 'remotion';
+import * as T from 'three';
+import {EffectComposer} from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
+import {ShaderPass} from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import {OutputPass} from 'three/examples/jsm/postprocessing/OutputPass.js';
+import {FXAAShader} from 'three/examples/jsm/shaders/FXAAShader.js';
+import {RoundedBoxGeometry} from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
+export const sat=(x:number)=>Math.max(0,Math.min(1,x));
+export const ease=(x:number)=>{x=sat(x);return x*x*x*(x*(x*6-15)+10)};
+export const range=(t:number,a:number,b:number)=>ease((t-a)/(b-a));
+const mix=(a:number,b:number,p:number)=>a+(b-a)*p;
+function hash(n:number){return Math.sin(n*127.1+311.7)*43758.5453%1}
+function dieTexture(){
+ const c=document.createElement('canvas');c.width=c.height=1024;const x=c.getContext('2d')!;
+ x.fillStyle='#111c24';x.fillRect(0,0,1024,1024);
+ x.strokeStyle='#84908c';x.lineWidth=5;x.strokeRect(15,15,994,994);
+ for(let j=0;j<8;j++)for(let i=0;i<8;i++){
+  const xx=50+i*116,yy=50+j*116;let h=Math.abs(hash(i+j*13));
+  x.fillStyle=h>.5?'#364650':'#233641';x.fillRect(xx,yy,98,98);
+  x.strokeStyle='#64766e';x.lineWidth=1;x.strokeRect(xx+4,yy+4,90,90);
+  x.fillStyle='#738378';for(let a=0;a<8;a++){x.fillRect(xx+10+a*10,yy+14,3,28);x.fillRect(xx+10+a*10,yy+56,3,28)}
+  x.strokeStyle=h>.45?'#a2986a':'#576b78';x.beginPath();x.moveTo(xx+3,yy+47);x.lineTo(xx+90,yy+47);x.stroke();
+ }
+ x.fillStyle='#ac9965';for(let i=0;i<58;i++){x.fillRect(26+i*17,0,8,12);x.fillRect(26+i*17,1012,8,12);x.fillRect(0,26+i*17,12,8);x.fillRect(1012,26+i*17,12,8)}
+ const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;tx.anisotropy=8;return tx;
+}
+function processorTexture(){
+ const c=document.createElement('canvas');c.width=c.height=2048;const x=c.getContext('2d')!;
+ x.fillStyle='#0c1720';x.fillRect(0,0,2048,2048);
+ for(let k=0;k<4;k++){
+  const ox=120+(k%2)*944,oy=120+Math.floor(k/2)*944;
+  x.fillStyle='#273847';x.fillRect(ox,oy,850,850);x.strokeStyle='#a89360';x.lineWidth=3;x.strokeRect(ox,oy,850,850);
+  for(let j=0;j<10;j++)for(let i=0;i<10;i++){
+   const xx=ox+30+i*80,yy=oy+30+j*80;x.fillStyle=(i+j)%3===0?'#648385':'#425e6a';x.fillRect(xx,yy,66,66);
+   x.fillStyle='#9eab96';for(let z=0;z<7;z++)x.fillRect(xx+5+z*8,yy+7,2,52);
+  }
+ }
+ x.fillStyle='#bb9c59';for(let i=0;i<96;i++){for(const s of [22,2004]){x.fillRect(30+i*21,s,10,20);x.fillRect(s,30+i*21,20,10)}}
+ x.fillStyle='#182630';x.fillRect(855,850,338,350);x.strokeStyle='#c0a264';x.lineWidth=4;x.strokeRect(855,850,338,350);x.fillStyle='#c6d3d5';x.font='bold 72px sans-serif';x.textAlign='center';x.fillText('Si',1024,1040);
+ const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;tx.anisotropy=8;return tx;
+}
+function build(canvas:HTMLCanvasElement,quality:number){
+ const renderer=new T.WebGLRenderer({canvas,antialias:false,alpha:true,preserveDrawingBuffer:true,powerPreference:'high-performance'});renderer.setSize(Math.round(1920*quality),Math.round(1080*quality),false);renderer.setPixelRatio(1);renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;renderer.outputColorSpace=T.SRGBColorSpace;
+ const scene=new T.Scene();scene.background=new T.Color('#05070a');scene.fog=new T.FogExp2('#05070a',.014);
+ const camera=new T.PerspectiveCamera(38,1920/1080,.03,150);
+ const pmrem=new T.PMREMGenerator(renderer);const environment=new RoomEnvironment();scene.environment=pmrem.fromScene(environment,.04).texture;scene.environmentIntensity=.55;
+ const hemi=new T.HemisphereLight('#cadcf0','#261219',1.0);scene.add(hemi);
+ const key=new T.DirectionalLight('#e4efff',4);key.position.set(-4,8,3);scene.add(key);
+ const rim=new T.DirectionalLight('#f24764',3);rim.position.set(6,3,-5);scene.add(rim);
+ const fill=new T.DirectionalLight('#86bfc7',1.3);fill.position.set(-6,1,-3);scene.add(fill);
+ const glow=new T.PointLight('#ff2549',1.5,12,2);glow.position.set(0,1.1,0);scene.add(glow);
+ const composer=new EffectComposer(renderer);composer.addPass(new RenderPass(scene,camera));composer.addPass(new OutputPass());const fxaa=new ShaderPass(FXAAShader);fxaa.material.uniforms.resolution.value.set(1/(1920*quality),1/(1080*quality));composer.addPass(fxaa);
+ const tex=dieTexture(),proc=processorTexture();
+ const sideMat=new T.MeshStandardMaterial({color:'#273641',metalness:.94,roughness:.23});
+ const waferMat=new T.MeshPhysicalMaterial({color:'#89959e',metalness:1,roughness:.18,iridescence:.75,iridescenceIOR:1.5,iridescenceThicknessRange:[220,550],clearcoat:.8});
+ const wafer=new T.Group();scene.add(wafer);
+ const disk=new T.Mesh(new T.CylinderGeometry(3.85,3.85,.075,160),waferMat);wafer.add(disk);
+ const edge=new T.Mesh(new T.TorusGeometry(3.85,.013,8,160),new T.MeshStandardMaterial({color:'#c7d1d9',metalness:1,roughness:.16}));edge.rotation.x=Math.PI/2;edge.position.y=.04;wafer.add(edge);
+ const diesMaterial=new T.MeshPhysicalMaterial({map:tex,color:'#dce8e5',metalness:.8,roughness:.19,iridescence:1,iridescenceIOR:1.5,iridescenceThicknessRange:[260,480],clearcoat:.5});
+ let positions:Array<[number,number]>=[];for(let z=-9;z<=9;z++)for(let x=-9;x<=9;x++)if(Math.hypot(x*.385,z*.385)<3.58&&!(x===0&&z===0))positions.push([x*.385,z*.385]);
+ const cells=new T.InstancedMesh(new T.BoxGeometry(.363,.027,.363),diesMaterial,positions.length);let o=new T.Object3D();positions.forEach(([x,z],i)=>{o.position.set(x,.056,z);o.updateMatrix();cells.setMatrixAt(i,o.matrix);cells.setColorAt(i,new T.Color().setHSL(.52+Math.sin(x*.8+z*.35)*.14,.25,.56+Math.sin(z+x)*.12))});wafer.add(cells);
+ const traceMat=new T.MeshBasicMaterial({color:'#ff264e',transparent:true,opacity:.75});const scan=new T.Mesh(new T.PlaneGeometry(7.65,.008),traceMat);scan.rotation.x=-Math.PI/2;scan.position.y=.075;wafer.add(scan);
+ // One identifiable center die survives the wafer-to-package transition.
+ const chip=new T.Group();scene.add(chip);
+ const mainDie=new T.Group();chip.add(mainDie);
+ const dieBody=new T.Mesh(new RoundedBoxGeometry(2.05,.12,2.05,3,.018),sideMat);mainDie.add(dieBody);
+ const surfaceMat=new T.MeshPhysicalMaterial({map:proc,metalness:.88,roughness:.21,color:'#aec1c5',iridescence:.65,iridescenceThicknessRange:[200,450],clearcoat:1});const dieSurface=new T.Mesh(new T.PlaneGeometry(2.05,2.05),surfaceMat);dieSurface.rotation.x=-Math.PI/2;dieSurface.position.y=.061;mainDie.add(dieSurface);
+ const gold=new T.MeshStandardMaterial({color:'#ba9454',metalness:.94,roughness:.23});
+ const red=new T.MeshPhysicalMaterial({color:'#8d122c',metalness:.65,roughness:.29,clearcoat:.8});
+ const layers:T.Group[]=[];
+ for(let n=0;n<3;n++){
+  const layer=new T.Group();const size=[3.0,2.72,2.38][n];const material=n===0?red:n===1?gold:sideMat;
+  const slab=new T.Mesh(new RoundedBoxGeometry(size,[.16,.075,.08][n],size,3,.02),material);layer.add(slab);
+  const border=new T.LineSegments(new T.EdgesGeometry(new T.BoxGeometry(size,[.16,.075,.08][n],size)),new T.LineBasicMaterial({color:n===0?'#dd3154':'#d6bd85',transparent:true,opacity:.55}));layer.add(border);
+  if(n<2){const contacts=new T.InstancedMesh(new T.CylinderGeometry(.028,.028,.06,8),gold,144);for(let j=0;j<12;j++)for(let i=0;i<12;i++){o.position.set((i-5.5)*size/13,.13,(j-5.5)*size/13);o.updateMatrix();contacts.setMatrixAt(j*12+i,o.matrix)}layer.add(contacts)}
+  layers.push(layer);chip.add(layer);
+ }
+ const details=new T.Group();chip.add(details);const capacitor=new T.MeshStandardMaterial({color:'#26302f',metalness:.55,roughness:.25});
+ for(let i=0;i<32;i++){const side=i%4,k=Math.floor(i/4),a=new T.Mesh(new RoundedBoxGeometry(.09,.055,.16,2,.012),capacitor);a.position.set((k-3.5)*.28,-.26,1.36);a.position.applyAxisAngle(new T.Vector3(0,1,0),side*Math.PI/2);a.rotation.y=side*Math.PI/2;details.add(a)}
+ const chiplets=new T.Group();chip.add(chiplets);
+ for(let n=0;n<4;n++){const m=new T.Mesh(new T.BoxGeometry(.38,.12,.72),surfaceMat);m.position.set(n<2?-1.28:1.28,.25,(n%2-.5)*1.35);chiplets.add(m)}
+ const coreLight=new T.Mesh(new T.BoxGeometry(2.11,.015,2.11),new T.MeshBasicMaterial({color:'#ff1842',transparent:true,opacity:.8}));chip.add(coreLight);
+ const network=new T.Group();scene.add(network);network.position.y=-.48;
+ const routes:{mesh:T.Mesh,pulse:T.Mesh,pad:T.Mesh,curve:T.CatmullRomCurve3,index:number}[]=[];
+ for(let n=0;n<48;n++){
+  const side=n%4,j=Math.floor(n/4),v=(j-5.5)*.19,dist=4.5+(n%7)*.5;
+  let pts=[new T.Vector3(v,0,1.54),new T.Vector3(v,0,2.0),new T.Vector3(v+(j%2?1:-1)*.55,0,2.55),new T.Vector3(v+(j%2?1:-1)*.55,0,dist),new T.Vector3(v+(j%2?1:-1)*(1.1+j*.3),0,dist+.7)];
+  pts=pts.map(p=>p.applyAxisAngle(new T.Vector3(0,1,0),side*Math.PI/2));const curve=new T.CatmullRomCurve3(pts,false,'centripetal');
+  const material=new T.MeshBasicMaterial({color:n%4===0?'#ed5366':'#79746a',transparent:true,opacity:n%4===0?.55:.3});const tube=new T.Mesh(new T.TubeGeometry(curve,60,.009,4,false),material);network.add(tube);
+  const pulse=new T.Mesh(new T.SphereGeometry(.029,6,6),new T.MeshBasicMaterial({color:n%3===0?'#ff375c':'#f3d49a'}));network.add(pulse);
+  const pad=new T.Mesh(new T.BoxGeometry(.19,.045,.19),gold);pad.position.copy(pts[4]);network.add(pad);routes.push({mesh:tube,pulse,pad,curve,index:n});
+ }
+ const floor=new T.Mesh(new T.PlaneGeometry(150,150),new T.MeshBasicMaterial({color:'#05070a'}));floor.rotation.x=-Math.PI/2;floor.position.y=-1.1;scene.add(floor);
+ // Sparse illuminated particles give depth without obscuring the industrial geometry.
+ const coords=new Float32Array(160*3);for(let n=0;n<160;n++){coords[n*3]=Math.sin(n*11.7)*14;coords[n*3+1]=Math.abs(Math.sin(n*7.9))*6+.2;coords[n*3+2]=Math.sin(n*3.17)*14}const pg=new T.BufferGeometry();pg.setAttribute('position',new T.BufferAttribute(coords,3));const particles=new T.Points(pg,new T.PointsMaterial({color:'#aab4c9',size:.018,transparent:true,opacity:.3}));scene.add(particles);
+ const v3=(a:number[])=>new T.Vector3(...a as [number,number,number]);
+ const cameraStates=[
+  {t:0,p:[.7,.68,1.15],target:[0,.03,0]},
+  {t:2.8,p:[1.2,1.1,1.9],target:[0,.03,0]},
+  {t:4.4,p:[7.5,8.8,9.5],target:[-1.15,0,0]},
+  {t:7.5,p:[5.6,9.6,10.1],target:[-1.1,0,0]},
+  {t:9.8,p:[3.5,3.6,5.4],target:[0,.4,0]},
+  {t:10.4,p:[4.2,3.8,5.9],target:[.25,.5,0]},
+  {t:12.0,p:[6.4,4.6,7.3],target:[.65,.65,0]},
+  {t:14.3,p:[6.0,4.3,7.1],target:[.65,.75,0]},
+  {t:16.2,p:[4.5,5.8,6.7],target:[0,0,0]},
+  {t:19.7,p:[6.8,9.7,9.1],target:[-.9,0,0]},
+  {t:21.0,p:[5.8,6.8,8.1],target:[0,0,0]},
+  {t:24.5,p:[4.5,3.0,5.9],target:[-.25,0,0]},
+  {t:28,p:[4.2,3.2,6.5],target:[-.25,0,0]}
+ ];
+ function render(t:number){
+  let a=cameraStates[0],b=cameraStates[1];for(let i=0;i<cameraStates.length-1;i++){if(t>=cameraStates[i].t){a=cameraStates[i];b=cameraStates[i+1]}}
+  const p=ease((t-a.t)/(b.t-a.t));camera.position.copy(v3(a.p).lerp(v3(b.p),p));camera.lookAt(v3(a.target).lerp(v3(b.target),p));
+  wafer.rotation.y=.07*Math.sin(t*.3);wafer.position.y=-range(t,8.4,11.0)*9;wafer.visible=t<11.5;
+  scan.position.z=mix(-3.65,3.65,(t*.23)%1);scan.scale.x=Math.sqrt(Math.max(.02,1-(scan.position.z/3.85)**2));
+  const grown=range(t,7.5,10.5);chip.scale.setScalar(mix(.177,1,grown));chip.position.y=mix(.061,.05,grown);chip.rotation.y=mix(wafer.rotation.y,-.14,grown)+range(t,20.2,24.5)*.45;
+  details.visible=t>10;details.scale.setScalar(range(t,10,11));let opened=range(t,10.2,12.1)*(1-range(t,14.1,16.0));
+  details.position.y=-opened*.25;mainDie.position.y=mix(0,.40,grown)+opened*1.85;layers.forEach((l,n)=>{l.visible=t>8.8;l.scale.setScalar(range(t,8.8+n*.12,10.8+n*.12));l.position.y=[-.4,-.13,.10][n]+opened*[-.25,.35,1.0][n]});
+  chiplets.visible=t>10.8;chiplets.scale.setScalar(range(t,10.8,11.6));chiplets.position.y=opened*.95;
+  coreLight.position.y=mainDie.position.y-.065;coreLight.visible=t>1; (coreLight.material as T.MeshBasicMaterial).opacity=.8+.2*Math.sin(t*Math.PI*4);
+  network.visible=t>15.1;const net=range(t,15.1,17.9);network.scale.setScalar(.85+.15*net);network.children.forEach(obj=>{if((obj as any).material&&(obj as any).material.opacity!==undefined){} });
+  routes.forEach(({mesh,pulse,pad,curve,index})=>{const d=range(t,15.3+index*.012,17.3+index*.012);mesh.geometry.setDrawRange(0,Math.floor(mesh.geometry.index!.count*d/3)*3);pad.scale.setScalar(range(d,.8,1));pulse.visible=d>.95&&t<24;const q=((t-16)*.6+index*.12)%1;pulse.position.copy(curve.getPoint(sat(q)));pulse.scale.setScalar(.9+Math.sin(t*4+index)*.3)});
+  const env=range(t,0,2.5);key.intensity=1.6+env*.7;rim.position.set(Math.cos(t*.25)*6,3,Math.sin(t*.25)*6);glow.position.set(Math.sin(t*1.2)*2,1.2,Math.cos(t*.7)*2);glow.intensity=t<3?1:0.8+.5*Math.pow(Math.max(0,Math.cos(t*Math.PI*4)),8);
+  particles.rotation.y=t*.007;particles.visible=t<24.5;floor.visible=false;
+  composer.render();
+ }
+ return {render,dispose(){renderer.dispose();composer.dispose();pmrem.dispose();environment.dispose();scene.traverse((obj:any)=>{obj.geometry?.dispose();if(obj.material){for(const m of Array.isArray(obj.material)?obj.material:[obj.material])m.dispose()}})}};
+}
+export const World:React.FC<{quality?:number}>=({quality=1})=>{const f=useCurrentFrame();const ref=useRef<HTMLCanvasElement>(null);const engine=useRef<ReturnType<typeof build>|null>(null);const [ready,setReady]=useState(false);const [handle]=useState(()=>delayRender('Build the cinematic 3D world',{timeoutInMilliseconds:120000}));
+ useEffect(()=>{engine.current=build(ref.current!,quality);engine.current.render(f/30);setReady(true);continueRender(handle);return()=>engine.current?.dispose()},[]);
+ useEffect(()=>{if(ready)engine.current!.render(f/30)},[f,ready]);
+ return <canvas ref={ref} width={1920} height={1080} style={{width:'100%',height:'100%',display:'block'}}/>;
+};

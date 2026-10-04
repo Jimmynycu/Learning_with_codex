@@ -1,0 +1,17 @@
+{
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": "30/1",
+    "frames": "840",
+    "seconds": "28.000000"
+  },
+  "audio": {
+    "codec": "aac",
+    "seconds": "28.011000",
+    "score_energy_correlation": 0.9999975859862463
+  },
+  "full_decode_passed": true,
+  "black_intervals": [],
+  "bytes": 35675081
+}

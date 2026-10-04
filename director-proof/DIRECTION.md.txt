@@ -1,0 +1,36 @@
+# TSMC / THE SCALE OF POSSIBILITY
+
+## Direction
+A 28-second original brand motion film about how small-scale precision enables large-scale possibility. The object, not a sequence of text cards, carries the film: light becomes a circuit, the circuit belongs to a die, the die belongs to a wafer, a die lifts into a layered package, the assembled package sends a pulse into a connected field, then the image resolves to a restrained brand signature.
+
+The subject is TSMC's dedicated foundry, advanced process and packaging work. Geometry is conceptual, not a claim about process internals. No fabricated numerical capability claims. Independent creative study, not an official advertisement.
+
+## Visual rules
+- Carbon black, silver, restrained ruby red; iridescent material accents tied to wafer reflection.
+- Native 3D geometry, physically based metallic lighting, deliberate camera movement. No stock video, no generated brand photographs.
+- Full-frame objects with generous negative space for typography. Type appears only where it adds narrative; no permanent explanatory dashboard or chapter labels.
+- Different scales: extreme macro, complete wafer, isolated die, exploded package, connected system.
+- Camera movement must carry the viewer between scales. Use short anticipations and long settles; avoid constant-speed motion.
+- Accent highlights respond to the music rather than flashing arbitrarily. Build → release → build → resolve.
+- Text is manually checked at desktop and mobile sizes. Film title remains understandable without audio.
+
+## Shot and sound plan (120 BPM; 56 beats)
+| Time | Visual | Sound |
+|---|---|---|
+| 0–3.5 | Crimson signal traces a macro circuit; camera rises toward a die | Air, restrained pulse, isolated tonal pluck |
+| 3.5–8 | Reveal a detailed reflective wafer, with die lattice and slow moving light | Harmonic entrance, warm bass, widening stereo |
+| 8–11 | One die is selected and lifts from the wafer; wafer falls away | Fine mechanical ticks and rising sweep |
+| 11–16 | Die and package separate into precise layers, then assemble | Layer-specific clicks, rhythmic build and impact |
+| 16–21 | Connected traces carry energy outwards from the package | Full rhythm, brighter arpeggio, moving signal sounds |
+| 21–24.5 | Final hero rotation and typographic payoff | Peak, then a deliberate pause |
+| 24.5–28 | Soft-lit brand resolve; final Chinese line | Final chord, low impact and long reverb tail |
+
+## Quality gates
+1. Render key visual states before a full export. Reject flat materials, weak silhouettes, small text, awkward crop or intersections.
+2. Review actual transition sequences, not only contact sheets. Check that the die remains identifiable through scale/scene changes.
+3. Generate music and visual hit timings from the same beats.json. Verify peak and loudness; avoid a bare repeating metronome.
+4. Decode the whole movie. Inspect dark and bright frames, scene boundaries and ending. Preserve evidence of specific corrections.
+5. Deploy and test the real public site for playback, scrubbing, sound and mobile overflow.
+
+## Reference boundary
+The tutorial's transcript is available. Direct visual reference retrieval is being re-attempted by the originally assigned research agent. No claim of exceeding the tutorial can be verified without comparable viewing and user judgment.

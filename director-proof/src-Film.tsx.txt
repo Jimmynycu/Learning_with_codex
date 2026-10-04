@@ -1,0 +1,36 @@
+import React from 'react';
+import {AbsoluteFill,Audio,Img,staticFile,useCurrentFrame} from 'remotion';
+import {World,range,sat} from './World';
+const WHITE='#eeeee8',RED='#f54865';
+function Copy({t,start,end,lines,x,y,width=850,size=104,eyebrow,align='left'}:{t:number,start:number,end:number,lines:string[],x:number,y:number,width?:number,size?:number,eyebrow?:string,align?:'left'|'center'|'right'}){
+ const out=1-range(t,end-.45,end);return <div style={{position:'absolute',left:x,top:y,width,color:WHITE,textAlign:align,opacity:out,pointerEvents:'none'}}>
+ {eyebrow&&<div style={{fontFamily:'Mono',fontSize:18,letterSpacing:4,color:'#c3c7c5',marginBottom:28,opacity:range(t,start,start+.5),transform:`translateY(${(1-range(t,start,start+.5))*12}px)`}}>{eyebrow}</div>}
+ {lines.map((line,i)=>{const a=range(t,start+.1+i*.13,start+.85+i*.13);return <div key={line} style={{overflow:'hidden',paddingBottom:8}}><div style={{fontFamily:'Space',fontSize:size,letterSpacing:-size*.05,lineHeight:1.04,transform:`translateY(${(1-a)*115}%)`,opacity:Math.min(1,a*3)}}>{line}</div></div>})}
+ <div style={{width:60*range(t,start+.55,start+1.25),height:3,background:RED,marginTop:25,marginLeft:align==='center'?'auto':0,marginRight:align==='center'?'auto':0}}/>
+ </div>
+}
+export const Film:React.FC<{quality?:number}>=({quality=1})=>{
+ const f=useCurrentFrame(),t=f/30;const end=range(t,24.2,25.3);return <AbsoluteFill style={{background:'#05070a',overflow:'hidden'}}>
+ <style>{`@font-face{font-family:Space;src:url(${staticFile('assets/SpaceGrotesk-Bold.ttf')})}@font-face{font-family:SpaceRegular;src:url(${staticFile('assets/SpaceGrotesk-Regular.ttf')})}@font-face{font-family:Mono;src:url(${staticFile('assets/IBMPlexMono-Regular.ttf')})}`}</style>
+ <Audio src={staticFile('director-cut/score.wav')}/>
+ <World quality={quality}/>
+ <AbsoluteFill style={{background:'radial-gradient(ellipse at 56% 42%,transparent 35%,rgba(1,3,6,.58) 100%)',pointerEvents:'none'}}/>
+ <div style={{position:'absolute',inset:0,backgroundImage:`url(${staticFile('director-cut/grain.png')})`,opacity:.035,mixBlendMode:'screen',pointerEvents:'none'}}/>
+ <div style={{position:'absolute',left:76,top:58,fontFamily:'Space',fontSize:25,color:WHITE,letterSpacing:-1,opacity:(1-end)*range(t,0,.6)}}>TSMC<span style={{fontFamily:'Mono',fontSize:12,letterSpacing:3,marginLeft:20,color:'#9eaaa9'}}>THE SCALE OF POSSIBILITY</span></div>
+ <Copy t={t} start={.3} end={3.45} lines={['It starts','small.']} x={90} y={570} size={110} eyebrow="FROM AN IDEA. TO EVERYTHING."/>
+ <Copy t={t} start={4.2} end={7.7} lines={['A world.','On a wafer.']} x={90} y={330} size={111} eyebrow="01 / A FOUNDATION FOR INNOVATION"/>
+ <div style={{position:'absolute',bottom:115,left:95,color:'#bec7c8',fontFamily:'SpaceRegular, Noto Sans CJK TC',fontSize:27,opacity:range(t,5,5.6)*(1-range(t,7.1,7.7))}}>從一片矽，開始。</div>
+ <Copy t={t} start={11.0} end={14.9} lines={['Precision.','In every','layer.']} x={1250} y={260} width={580} size={85} eyebrow="02 / ADVANCED INTEGRATION"/>
+ <div style={{position:'absolute',left:1255,top:680,color:'#bcc3c4',fontFamily:'SpaceRegular, Noto Sans CJK TC',fontSize:25,lineHeight:1.8,opacity:range(t,12,12.7)*(1-range(t,14.3,14.9))}}>先進製程 × 先進封裝<br/><span style={{fontSize:17,color:'#79888c',fontFamily:'Mono'}}>CONCEPTUAL STRUCTURE</span></div>
+ <Copy t={t} start={17.0} end={20.6} lines={['Ideas, connected.']} x={300} y={160} width={1320} size={101} align="center" eyebrow="03 / GREATER THAN THE SUM"/>
+ <Copy t={t} start={21.1} end={24.35} lines={['Small scale.','Infinite possibility.']} x={90} y={680} width={1500} size={86}/>
+ {/* The light resolves into a quiet, warm final frame; the last line gets room to breathe. */}
+ <AbsoluteFill style={{background:'#efeee7',opacity:end}}>
+  <svg width="1920" height="1080" style={{position:'absolute',opacity:.13,transform:`translateX(${(1-end)*150}px)`}}><defs><pattern id="dies" width="44" height="44" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="37" height="37" rx="1" fill="none" stroke="#8c8d84" strokeWidth="1"/></pattern></defs><circle cx="1750" cy="540" r="550" fill="url(#dies)" stroke="#9b9d95" strokeWidth="2"/></svg>
+  <div style={{position:'absolute',left:95,top:100,transform:`translateY(${(1-range(t,24.6,25.6))*35}px)`,opacity:range(t,24.6,25.6)}}><Img src={staticFile('assets/logo.png')} style={{width:132,height:99,objectFit:'contain'}}/></div>
+  <div style={{position:'absolute',left:90,top:335,color:'#151c20',fontFamily:'Space',fontSize:130,lineHeight:1.02,letterSpacing:-7,transform:`translateY(${(1-range(t,24.6,25.7))*60}px)`,opacity:range(t,24.6,25.7)}}>We make<br/>possibility real<span style={{color:'#d32245'}}>.</span></div>
+  <div style={{position:'absolute',left:98,top:675,color:'#4c5555',fontSize:37,fontFamily:'Noto Sans CJK TC',letterSpacing:5,opacity:range(t,25.1,25.8)}}>台積電 · 創新，成為現實。</div>
+  <div style={{position:'absolute',left:98,bottom:70,fontFamily:'Mono',fontSize:16,letterSpacing:3,color:'#7d8582',opacity:range(t,25.1,25.8)}}>INDEPENDENT BRAND FILM / 2026</div>
+ </AbsoluteFill>
+ </AbsoluteFill>
+};

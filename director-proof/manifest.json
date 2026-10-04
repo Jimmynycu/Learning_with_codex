@@ -1,0 +1,14 @@
+{
+  "title": "TSMC \u2014 The Scale of Possibility",
+  "file": "tsmc-scale-of-possibility.mp4",
+  "duration": 28,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "frames": 840,
+  "sha256": "f06efe681c6bfbdeb537adc002fae7f0120e4955746607d69da9c33ebe770372",
+  "engines": {
+    "Remotion": "4.0.532",
+    "Three.js": "0.186.1"
+  }
+}
