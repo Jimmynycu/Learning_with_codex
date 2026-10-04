@@ -1,0 +1,183 @@
+{
+  "video": {
+    "index": 0,
+    "codec_name": "h264",
+    "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+    "profile": "High",
+    "codec_type": "video",
+    "codec_tag_string": "avc1",
+    "codec_tag": "0x31637661",
+    "width": 1920,
+    "height": 1080,
+    "coded_width": 1920,
+    "coded_height": 1080,
+    "closed_captions": 0,
+    "film_grain": 0,
+    "has_b_frames": 2,
+    "sample_aspect_ratio": "1:1",
+    "display_aspect_ratio": "16:9",
+    "pix_fmt": "yuvj420p",
+    "level": 40,
+    "color_range": "pc",
+    "color_space": "bt470bg",
+    "chroma_location": "center",
+    "field_order": "progressive",
+    "refs": 1,
+    "is_avc": "true",
+    "nal_length_size": "4",
+    "id": "0x1",
+    "r_frame_rate": "30/1",
+    "avg_frame_rate": "30/1",
+    "time_base": "1/90000",
+    "start_pts": 0,
+    "start_time": "0.000000",
+    "duration_ts": 7560000,
+    "duration": "84.000000",
+    "bit_rate": "2130290",
+    "bits_per_raw_sample": "8",
+    "nb_frames": "2520",
+    "extradata_size": 51,
+    "disposition": {
+      "default": 1,
+      "dub": 0,
+      "original": 0,
+      "comment": 0,
+      "lyrics": 0,
+      "karaoke": 0,
+      "forced": 0,
+      "hearing_impaired": 0,
+      "visual_impaired": 0,
+      "clean_effects": 0,
+      "attached_pic": 0,
+      "timed_thumbnails": 0,
+      "non_diegetic": 0,
+      "captions": 0,
+      "descriptions": 0,
+      "metadata": 0,
+      "dependent": 0,
+      "still_image": 0,
+      "multilayer": 0
+    },
+    "tags": {
+      "language": "und",
+      "handler_name": "VideoHandler",
+      "vendor_id": "[0][0][0][0]"
+    },
+    "side_data_list": [
+      {
+        "side_data_type": "ICC Profile"
+      }
+    ]
+  },
+  "audio": {
+    "index": 1,
+    "codec_name": "aac",
+    "codec_long_name": "AAC (Advanced Audio Coding)",
+    "profile": "LC",
+    "codec_type": "audio",
+    "codec_tag_string": "mp4a",
+    "codec_tag": "0x6134706d",
+    "sample_fmt": "fltp",
+    "sample_rate": "48000",
+    "channels": 2,
+    "channel_layout": "stereo",
+    "bits_per_sample": 0,
+    "initial_padding": 0,
+    "id": "0x2",
+    "r_frame_rate": "0/0",
+    "avg_frame_rate": "0/0",
+    "time_base": "1/48000",
+    "start_pts": 0,
+    "start_time": "0.000000",
+    "duration_ts": 4032528,
+    "duration": "84.011000",
+    "bit_rate": "317373",
+    "nb_frames": "3940",
+    "extradata_size": 2,
+    "disposition": {
+      "default": 1,
+      "dub": 0,
+      "original": 0,
+      "comment": 0,
+      "lyrics": 0,
+      "karaoke": 0,
+      "forced": 0,
+      "hearing_impaired": 0,
+      "visual_impaired": 0,
+      "clean_effects": 0,
+      "attached_pic": 0,
+      "timed_thumbnails": 0,
+      "non_diegetic": 0,
+      "captions": 0,
+      "descriptions": 0,
+      "metadata": 0,
+      "dependent": 0,
+      "still_image": 0,
+      "multilayer": 0
+    },
+    "tags": {
+      "language": "und",
+      "handler_name": "SoundHandler",
+      "vendor_id": "[0][0][0][0]"
+    }
+  },
+  "sha256": "8ff4616056518550b4c7f77b0504c7f0c9f284fd65defe0daf0e5b150816375c",
+  "bytes": 25796333,
+  "full_decode": true,
+  "intentional_dark_transitions": [
+    {
+      "start": 7.9,
+      "end": 8.666667,
+      "duration": 0.766667
+    },
+    {
+      "start": 17.9,
+      "end": 18.466667,
+      "duration": 0.566667
+    },
+    {
+      "start": 29.933333,
+      "end": 30.166667,
+      "duration": 0.233333
+    },
+    {
+      "start": 40.9,
+      "end": 41.133333,
+      "duration": 0.233333
+    },
+    {
+      "start": 49.9,
+      "end": 50.4,
+      "duration": 0.5
+    },
+    {
+      "start": 59.933333,
+      "end": 60.166667,
+      "duration": 0.233333
+    },
+    {
+      "start": 73.9,
+      "end": 74.133333,
+      "duration": 0.233333
+    }
+  ],
+  "unexpected_black_intervals": [],
+  "sampled_seconds": [
+    3,
+    12,
+    17.5,
+    18.3,
+    24,
+    29.5,
+    34,
+    40.5,
+    45,
+    49.6,
+    54,
+    59.5,
+    65,
+    70,
+    77,
+    82
+  ]
+}
