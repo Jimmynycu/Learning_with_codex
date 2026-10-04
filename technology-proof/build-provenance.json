@@ -7,11 +7,37 @@
   "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
   "chromium": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
   "source_sha256": {
-    "technology-film/src/World.tsx": "b09ff4cdc6527a84a0ef2d9e2dbc658fa983a409f3c7200fa84fec6f67225862",
+    "technology-film/src/World.tsx": "9ddb96f749766f72e567c8452d6c30bc6e08ca9a1495aad329eff98da879b3a9",
     "technology-film/src/index.tsx": "8ef902ed20247700b4b0e7f28066aebce499ed324c4e43e56cf8d30d871ea35d",
-    "technology-film/src/Film.tsx": "b87b0e4786cd842ed320f5297064c38716be83cee73b927b7982f6e3464d539c"
+    "technology-film/src/Film.tsx": "62a31d5887eb6a2f7fdd38d621a75e0a204e49dce503bda41a12f9ac701df57a",
+    "technology-film/scripts/build-density.py": "09a465172a7e2220ac5e19bf2523f73c50d42a3ac00de5506172b41ee2f4a6f3"
   },
   "approved_previous_master_sha256": "f06efe681c6bfbdeb537adc002fae7f0120e4955746607d69da9c33ebe770372",
   "source_frozen_for_final": true,
-  "antialiasing": "full-resolution FXAA"
+  "antialiasing": "full-resolution FXAA",
+  "revision": "v2 \u2014 varied compositions, official Soft Logic reference study",
+  "reference_scope": "Official original downloaded and contact sheets inspected; full YouTube compilation blocked by proxy 403",
+  "full_render_source_sha256": {
+    "technology-film/src/World.tsx": "9ddb96f749766f72e567c8452d6c30bc6e08ca9a1495aad329eff98da879b3a9",
+    "technology-film/src/index.tsx": "8ef902ed20247700b4b0e7f28066aebce499ed324c4e43e56cf8d30d871ea35d",
+    "technology-film/src/Film.tsx": "ec67b353a4ae4c63aa6fbf991add4fc6541876ab3b2f9c676b237f2ca6ce2d88"
+  },
+  "delivery_method": "Native 1080p full render with frame-accurate replacements: 41\u201350s deterministic Pillow diagram; 50\u201355s Remotion/Three.js assembly label repair; FFmpeg concat, original AAC copied intact.",
+  "density_asset_sha256": "cda372d414b6f254ed4d8a1fb306f1697b9bff489c92e96375a7804cfc72a226",
+  "repairs": [
+    {
+      "frames": [
+        1230,
+        1499
+      ],
+      "reason": "Chromium continuous rendering produced duplicated tiles; PNG and concurrency=1 did not eliminate the issue. Replaced with deterministic native Pillow frames; all 270 frames checked for the observed artifact."
+    },
+    {
+      "frames": [
+        1500,
+        1649
+      ],
+      "reason": "Moved heading away from floating HBM during assembly."
+    }
+  ]
 }

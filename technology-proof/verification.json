@@ -16,9 +16,9 @@
     "has_b_frames": 2,
     "sample_aspect_ratio": "1:1",
     "display_aspect_ratio": "16:9",
-    "pix_fmt": "yuvj420p",
+    "pix_fmt": "yuv420p",
     "level": 40,
-    "color_range": "pc",
+    "color_range": "tv",
     "color_space": "bt470bg",
     "chroma_location": "center",
     "field_order": "progressive",
@@ -28,12 +28,12 @@
     "id": "0x1",
     "r_frame_rate": "30/1",
     "avg_frame_rate": "30/1",
-    "time_base": "1/90000",
+    "time_base": "1/15360",
     "start_pts": 0,
     "start_time": "0.000000",
-    "duration_ts": 7560000,
+    "duration_ts": 1290240,
     "duration": "84.000000",
-    "bit_rate": "2130290",
+    "bit_rate": "1301019",
     "bits_per_raw_sample": "8",
     "nb_frames": "2520",
     "extradata_size": 51,
@@ -61,7 +61,8 @@
     "tags": {
       "language": "und",
       "handler_name": "VideoHandler",
-      "vendor_id": "[0][0][0][0]"
+      "vendor_id": "[0][0][0][0]",
+      "encoder": "Lavc61.19.101 libx264"
     },
     "side_data_list": [
       {
@@ -121,44 +122,24 @@
       "vendor_id": "[0][0][0][0]"
     }
   },
-  "sha256": "8ff4616056518550b4c7f77b0504c7f0c9f284fd65defe0daf0e5b150816375c",
-  "bytes": 25796333,
+  "sha256": "1309c63e79611077d03957b82b673d4d9c753506acb14dafd2d3c9dd00ad4bec",
+  "bytes": 17089269,
   "full_decode": true,
   "intentional_dark_transitions": [
     {
-      "start": 7.9,
-      "end": 8.666667,
-      "duration": 0.766667
+      "start": 30.0,
+      "end": 30.733333,
+      "duration": 0.733333
     },
     {
-      "start": 17.9,
-      "end": 18.466667,
-      "duration": 0.566667
+      "start": 60.0,
+      "end": 60.3,
+      "duration": 0.3
     },
     {
-      "start": 29.933333,
-      "end": 30.166667,
-      "duration": 0.233333
-    },
-    {
-      "start": 40.9,
-      "end": 41.133333,
-      "duration": 0.233333
-    },
-    {
-      "start": 49.9,
-      "end": 50.4,
-      "duration": 0.5
-    },
-    {
-      "start": 59.933333,
-      "end": 60.166667,
-      "duration": 0.233333
-    },
-    {
-      "start": 73.9,
-      "end": 74.133333,
-      "duration": 0.233333
+      "start": 73.933333,
+      "end": 74.666667,
+      "duration": 0.733333
     }
   ],
   "unexpected_black_intervals": [],
