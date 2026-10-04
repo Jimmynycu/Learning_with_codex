@@ -8,7 +8,7 @@
   "video_codec": "h264",
   "pixel_format": "yuv420p",
   "audio_codec": "aac",
-  "sha256": "19cf1fb143267fdb1d598e0ce18e24bf497a5f7a51aee0f77b4dafc09c9b7cdf",
+  "sha256": "824a0670cbfc1e0385bb377fcb4f54bd3cc7341664e4f10f3bc1223d5bb35484",
   "strict_full_decode": "pass",
   "main_content_roi": [
     80,
@@ -22,5 +22,5 @@
   "editorial_beats": 30,
   "planned_beat_interval_seconds": 2,
   "note": "Pixel motion detection excludes header/footer. Semantic pacing is documented in the script and reviewed using encoded storyboard frames; pixel motion alone does not prove information density.",
-  "audio_summary": "Summary:\n\n  Integrated loudness:\n    I:         -16.1 LUFS\n    Threshold: -26.2 LUFS\n\n  Loudness range:\n    LRA:         2.9 LU\n    Threshold: -36.1 LUFS\n    LRA low:   -17.7 LUFS\n    LRA high:  -14.8 LUFS\n\n  True peak:\n    Peak:       -1.3 dBFS\n[out#0/null @ 0x55aa3f3176c0] video:773KiB audio:11252KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe= 1800 fps=456 q=-0.0 Lsize=N/A time=00:01:00.00 bitrate=N/A speed=15.2x    \n"
+  "audio_summary": "Summary:\n\n  Integrated loudness:\n    I:         -16.6 LUFS\n    Threshold: -26.6 LUFS\n\n  Loudness range:\n    LRA:         2.0 LU\n    Threshold: -36.6 LUFS\n    LRA low:   -17.5 LUFS\n    LRA high:  -15.5 LUFS\n\n  True peak:\n    Peak:       -1.2 dBFS\n[out#0/null @ 0x557882064c80] video:773KiB audio:11252KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe= 1800 fps=245 q=-0.0 Lsize=N/A time=00:01:00.00 bitrate=N/A speed=8.17x    \n"
 }

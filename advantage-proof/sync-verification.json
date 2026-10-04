@@ -1,0 +1,179 @@
+{
+  "shared_event_count": 94,
+  "fps": 30,
+  "samples_per_frame": 1600,
+  "aac_alignment_checks": [
+    {
+      "time_seconds": 0.4,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999681
+    },
+    {
+      "time_seconds": 6,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999943
+    },
+    {
+      "time_seconds": 8,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.9992
+    },
+    {
+      "time_seconds": 12,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999955
+    },
+    {
+      "time_seconds": 20,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999927
+    },
+    {
+      "time_seconds": 23.5,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999492
+    },
+    {
+      "time_seconds": 26,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999955
+    },
+    {
+      "time_seconds": 27.5,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.99934
+    },
+    {
+      "time_seconds": 29,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.998576
+    },
+    {
+      "time_seconds": 29.2,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999081
+    },
+    {
+      "time_seconds": 29.4,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.998634
+    },
+    {
+      "time_seconds": 29.6,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.998703
+    },
+    {
+      "time_seconds": 29.8,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999732
+    },
+    {
+      "time_seconds": 30,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999905
+    },
+    {
+      "time_seconds": 34,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999909
+    },
+    {
+      "time_seconds": 40,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999946
+    },
+    {
+      "time_seconds": 44.7666667,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999758
+    },
+    {
+      "time_seconds": 50,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999888
+    },
+    {
+      "time_seconds": 56,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.999946
+    },
+    {
+      "time_seconds": 58,
+      "decoded_aac_offset_samples": 0,
+      "offset_ms": 0.0,
+      "correlation": 0.99993
+    }
+  ],
+  "max_abs_audio_offset_ms": 0.0,
+  "eight_physical_contacts": [
+    {
+      "name": "compute-0",
+      "picture_contact_frame": 825,
+      "sound_start_sample": 1320000,
+      "dry_plus_room_transient_peak_ms_after_contact": 2.125
+    },
+    {
+      "name": "compute-1",
+      "picture_contact_frame": 833,
+      "sound_start_sample": 1332800,
+      "dry_plus_room_transient_peak_ms_after_contact": 2.0625
+    },
+    {
+      "name": "hbm-0",
+      "picture_contact_frame": 870,
+      "sound_start_sample": 1392000,
+      "dry_plus_room_transient_peak_ms_after_contact": 2.25
+    },
+    {
+      "name": "hbm-1",
+      "picture_contact_frame": 876,
+      "sound_start_sample": 1401600,
+      "dry_plus_room_transient_peak_ms_after_contact": 3.0833333333333335
+    },
+    {
+      "name": "hbm-2",
+      "picture_contact_frame": 882,
+      "sound_start_sample": 1411200,
+      "dry_plus_room_transient_peak_ms_after_contact": 2.125
+    },
+    {
+      "name": "hbm-3",
+      "picture_contact_frame": 888,
+      "sound_start_sample": 1420800,
+      "dry_plus_room_transient_peak_ms_after_contact": 2.958333333333333
+    },
+    {
+      "name": "hbm-4",
+      "picture_contact_frame": 894,
+      "sound_start_sample": 1430400,
+      "dry_plus_room_transient_peak_ms_after_contact": 2.958333333333333
+    },
+    {
+      "name": "hbm-5",
+      "picture_contact_frame": 900,
+      "sound_start_sample": 1440000,
+      "dry_plus_room_transient_peak_ms_after_contact": 2.0833333333333335
+    }
+  ],
+  "limitation": "These checks prove event timing and preserved mux alignment, not a subjective guarantee of music quality. Geometry contact and dense encoded-image review are separate checks."
+}

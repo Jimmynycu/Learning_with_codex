@@ -1,0 +1,54 @@
+{
+  "independent_ray_box_samples_passed": 519,
+  "depth_mismatches": 0,
+  "geometry_frames_checked": 608,
+  "screen_safe_bounds": [
+    80,
+    170,
+    1840,
+    930
+  ],
+  "clipped_geometry_frames": 0,
+  "contact_checks": [
+    {
+      "object": "compute-0",
+      "frame": 825,
+      "gap": 0.0
+    },
+    {
+      "object": "compute-1",
+      "frame": 833,
+      "gap": 0.0
+    },
+    {
+      "object": "hbm-0",
+      "frame": 870,
+      "gap": 0.0
+    },
+    {
+      "object": "hbm-1",
+      "frame": 876,
+      "gap": 0.0
+    },
+    {
+      "object": "hbm-2",
+      "frame": 882,
+      "gap": 0.0
+    },
+    {
+      "object": "hbm-3",
+      "frame": 888,
+      "gap": 0.0
+    },
+    {
+      "object": "hbm-4",
+      "frame": 894,
+      "gap": 0.0
+    },
+    {
+      "object": "hbm-5",
+      "frame": 900,
+      "gap": 0.0
+    }
+  ]
+}

@@ -1,0 +1,496 @@
+{
+  "fps": 30,
+  "audio_sample_rate": 48000,
+  "samples_per_frame": 1600,
+  "events": [
+    {
+      "name": "cut-0",
+      "kind": "cut",
+      "frame": 0
+    },
+    {
+      "name": "title-0",
+      "kind": "title",
+      "frame": 12
+    },
+    {
+      "name": "cut-2",
+      "kind": "cut",
+      "frame": 60
+    },
+    {
+      "name": "title-2",
+      "kind": "title",
+      "frame": 72
+    },
+    {
+      "name": "cut-4",
+      "kind": "cut",
+      "frame": 120
+    },
+    {
+      "name": "title-4",
+      "kind": "title",
+      "frame": 132
+    },
+    {
+      "name": "cut-6",
+      "kind": "cut",
+      "frame": 180
+    },
+    {
+      "name": "title-6",
+      "kind": "title",
+      "frame": 192
+    },
+    {
+      "name": "gate-0-move",
+      "kind": "move",
+      "frame": 195,
+      "end_frame": 240
+    },
+    {
+      "name": "gate-1-move",
+      "kind": "move",
+      "frame": 201,
+      "end_frame": 246
+    },
+    {
+      "name": "gate-2-move",
+      "kind": "move",
+      "frame": 207,
+      "end_frame": 252
+    },
+    {
+      "name": "cut-8",
+      "kind": "cut",
+      "frame": 240
+    },
+    {
+      "name": "gate-0-land",
+      "kind": "land",
+      "frame": 240
+    },
+    {
+      "name": "gate-1-land",
+      "kind": "land",
+      "frame": 246
+    },
+    {
+      "name": "title-8",
+      "kind": "title",
+      "frame": 252
+    },
+    {
+      "name": "gate-2-land",
+      "kind": "land",
+      "frame": 252
+    },
+    {
+      "name": "cut-10",
+      "kind": "cut",
+      "frame": 300
+    },
+    {
+      "name": "title-10",
+      "kind": "title",
+      "frame": 312
+    },
+    {
+      "name": "cut-12",
+      "kind": "cut",
+      "frame": 360
+    },
+    {
+      "name": "power-25-move",
+      "kind": "move",
+      "frame": 368,
+      "end_frame": 413
+    },
+    {
+      "name": "title-12",
+      "kind": "title",
+      "frame": 372
+    },
+    {
+      "name": "power-25-land",
+      "kind": "land",
+      "frame": 413
+    },
+    {
+      "name": "cut-14",
+      "kind": "cut",
+      "frame": 420
+    },
+    {
+      "name": "cut-16",
+      "kind": "cut",
+      "frame": 480
+    },
+    {
+      "name": "power-30-move",
+      "kind": "move",
+      "frame": 480,
+      "end_frame": 525
+    },
+    {
+      "name": "power-30-land",
+      "kind": "land",
+      "frame": 525
+    },
+    {
+      "name": "cut-18",
+      "kind": "cut",
+      "frame": 540
+    },
+    {
+      "name": "title-18",
+      "kind": "title",
+      "frame": 552
+    },
+    {
+      "name": "cut-20",
+      "kind": "cut",
+      "frame": 600
+    },
+    {
+      "name": "title-20",
+      "kind": "title",
+      "frame": 612
+    },
+    {
+      "name": "back-power-move",
+      "kind": "move",
+      "frame": 645,
+      "end_frame": 705
+    },
+    {
+      "name": "cut-22",
+      "kind": "cut",
+      "frame": 660
+    },
+    {
+      "name": "title-22",
+      "kind": "title",
+      "frame": 672
+    },
+    {
+      "name": "back-power-land",
+      "kind": "land",
+      "frame": 705
+    },
+    {
+      "name": "cut-24",
+      "kind": "cut",
+      "frame": 720
+    },
+    {
+      "name": "title-24",
+      "kind": "title",
+      "frame": 732
+    },
+    {
+      "name": "cut-26",
+      "kind": "cut",
+      "frame": 780
+    },
+    {
+      "name": "compute-0-move",
+      "kind": "move",
+      "frame": 780,
+      "end_frame": 825
+    },
+    {
+      "name": "compute-1-move",
+      "kind": "move",
+      "frame": 788,
+      "end_frame": 833
+    },
+    {
+      "name": "title-26",
+      "kind": "title",
+      "frame": 792
+    },
+    {
+      "name": "compute-0-land",
+      "kind": "land",
+      "frame": 825
+    },
+    {
+      "name": "hbm-0-move",
+      "kind": "move",
+      "frame": 825,
+      "end_frame": 870
+    },
+    {
+      "name": "hbm-1-move",
+      "kind": "move",
+      "frame": 831,
+      "end_frame": 876
+    },
+    {
+      "name": "compute-1-land",
+      "kind": "land",
+      "frame": 833
+    },
+    {
+      "name": "hbm-2-move",
+      "kind": "move",
+      "frame": 837,
+      "end_frame": 882
+    },
+    {
+      "name": "cut-28",
+      "kind": "cut",
+      "frame": 840
+    },
+    {
+      "name": "hbm-3-move",
+      "kind": "move",
+      "frame": 843,
+      "end_frame": 888
+    },
+    {
+      "name": "hbm-4-move",
+      "kind": "move",
+      "frame": 849,
+      "end_frame": 894
+    },
+    {
+      "name": "title-28",
+      "kind": "title",
+      "frame": 852
+    },
+    {
+      "name": "hbm-5-move",
+      "kind": "move",
+      "frame": 855,
+      "end_frame": 900
+    },
+    {
+      "name": "hbm-0-land",
+      "kind": "land",
+      "frame": 870
+    },
+    {
+      "name": "hbm-1-land",
+      "kind": "land",
+      "frame": 876
+    },
+    {
+      "name": "hbm-2-land",
+      "kind": "land",
+      "frame": 882
+    },
+    {
+      "name": "hbm-3-land",
+      "kind": "land",
+      "frame": 888
+    },
+    {
+      "name": "hbm-4-land",
+      "kind": "land",
+      "frame": 894
+    },
+    {
+      "name": "cut-30",
+      "kind": "cut",
+      "frame": 900
+    },
+    {
+      "name": "hbm-5-land",
+      "kind": "land",
+      "frame": 900
+    },
+    {
+      "name": "title-30",
+      "kind": "title",
+      "frame": 912
+    },
+    {
+      "name": "cut-32",
+      "kind": "cut",
+      "frame": 960
+    },
+    {
+      "name": "title-32",
+      "kind": "title",
+      "frame": 972
+    },
+    {
+      "name": "cut-34",
+      "kind": "cut",
+      "frame": 1020
+    },
+    {
+      "name": "die-area-move",
+      "kind": "move",
+      "frame": 1028,
+      "end_frame": 1073
+    },
+    {
+      "name": "title-34",
+      "kind": "title",
+      "frame": 1032
+    },
+    {
+      "name": "die-area-land",
+      "kind": "land",
+      "frame": 1073
+    },
+    {
+      "name": "cut-36",
+      "kind": "cut",
+      "frame": 1080
+    },
+    {
+      "name": "title-36",
+      "kind": "title",
+      "frame": 1092
+    },
+    {
+      "name": "cut-38",
+      "kind": "cut",
+      "frame": 1140
+    },
+    {
+      "name": "title-38",
+      "kind": "title",
+      "frame": 1152
+    },
+    {
+      "name": "cut-40",
+      "kind": "cut",
+      "frame": 1200
+    },
+    {
+      "name": "title-40",
+      "kind": "title",
+      "frame": 1212
+    },
+    {
+      "name": "cut-42",
+      "kind": "cut",
+      "frame": 1260
+    },
+    {
+      "name": "title-42",
+      "kind": "title",
+      "frame": 1272
+    },
+    {
+      "name": "cut-44",
+      "kind": "cut",
+      "frame": 1320
+    },
+    {
+      "name": "cost-total-move",
+      "kind": "move",
+      "frame": 1320,
+      "end_frame": 1343
+    },
+    {
+      "name": "title-44",
+      "kind": "title",
+      "frame": 1332
+    },
+    {
+      "name": "cost-total-land",
+      "kind": "land",
+      "frame": 1343
+    },
+    {
+      "name": "cut-46",
+      "kind": "cut",
+      "frame": 1380
+    },
+    {
+      "name": "title-46",
+      "kind": "title",
+      "frame": 1392
+    },
+    {
+      "name": "cut-48",
+      "kind": "cut",
+      "frame": 1440
+    },
+    {
+      "name": "title-48",
+      "kind": "title",
+      "frame": 1452
+    },
+    {
+      "name": "cut-50",
+      "kind": "cut",
+      "frame": 1500
+    },
+    {
+      "name": "roadmap-0-move",
+      "kind": "move",
+      "frame": 1500,
+      "end_frame": 1515
+    },
+    {
+      "name": "title-50",
+      "kind": "title",
+      "frame": 1512
+    },
+    {
+      "name": "roadmap-0-land",
+      "kind": "land",
+      "frame": 1515
+    },
+    {
+      "name": "cut-52",
+      "kind": "cut",
+      "frame": 1560
+    },
+    {
+      "name": "roadmap-1-move",
+      "kind": "move",
+      "frame": 1560,
+      "end_frame": 1575
+    },
+    {
+      "name": "roadmap-1-land",
+      "kind": "land",
+      "frame": 1575
+    },
+    {
+      "name": "cut-54",
+      "kind": "cut",
+      "frame": 1620
+    },
+    {
+      "name": "roadmap-2-move",
+      "kind": "move",
+      "frame": 1620,
+      "end_frame": 1635
+    },
+    {
+      "name": "roadmap-2-land",
+      "kind": "land",
+      "frame": 1635
+    },
+    {
+      "name": "cut-56",
+      "kind": "cut",
+      "frame": 1680
+    },
+    {
+      "name": "title-56",
+      "kind": "title",
+      "frame": 1692
+    },
+    {
+      "name": "cut-58",
+      "kind": "cut",
+      "frame": 1740
+    },
+    {
+      "name": "title-58",
+      "kind": "title",
+      "frame": 1752
+    }
+  ]
+}
